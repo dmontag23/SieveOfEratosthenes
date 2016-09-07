@@ -1,2 +1,2 @@
 # SieveOfEratosthenes
-A .NET application that implements the sieve of eratosthenes
+A .NET application that implements the sieve of eratosthenes. 
