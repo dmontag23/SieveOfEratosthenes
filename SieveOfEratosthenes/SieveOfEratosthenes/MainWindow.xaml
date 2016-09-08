@@ -1,12 +1,37 @@
-﻿<Window x:Name="SieveOfEratosthenes" x:Class="SieveOfEratosthenes.MainWindow"
+﻿<Window x:Name="sieveOfEratosthenes" x:Class="SieveOfEratosthenes.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SieveOfEratosthenes"
         mc:Ignorable="d"
-        Title="Sieve of Eratosthenes" Height="350" Width="525">
-    <Grid>
-        
+        Title="Sieve of Eratosthenes" Height="596.177" Width="525"
+        FocusManager.FocusedElement="{Binding ElementName=numberBox}">
+    <Grid x:Name="MainGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="259*"/>
+            <ColumnDefinition Width="258*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80*"/>
+            <RowDefinition Height="60*"/>
+            <RowDefinition Height="40*"/>
+            <RowDefinition Height="350*"/>
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="title" HorizontalAlignment="Center" Margin="0,10,0,0" TextWrapping="Wrap" Text="Find Primes" VerticalAlignment="Top" FontSize="36" Height="48" Width="185" Grid.ColumnSpan="2"/>
+        <TextBlock x:Name="enterANumber" HorizontalAlignment="Right" Margin="0" TextWrapping="Wrap" Text="Enter a number: " FontSize="24" Grid.Row="1" VerticalAlignment="Top" Height="32" Width="175"/>
+        <TextBox x:Name="numberBox" Grid.Column="1" HorizontalAlignment="Left" Margin="0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Height="32" Width="166" MaxLines="1" MaxLength="12" FontSize="24" TextAlignment="Right"/>
+        <Button x:Name="button" Grid.ColumnSpan="2" Content="Find Primes!" HorizontalAlignment="Center" Margin="0" Grid.Row="2" VerticalAlignment="Top" FontSize="18" Width="110" Click="button_Click" Height="28"/>
+        <ListBox x:Name="displayPrimes" HorizontalAlignment="Left" Height="317" Margin="0" Grid.Row="3" VerticalAlignment="Top" Width="517" Grid.ColumnSpan="2" FontSize="40" BorderThickness="0" FontWeight="Light">
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Width="{Binding (FrameworkElement.ActualWidth), RelativeSource={RelativeSource AncestorType=ScrollContentPresenter}}"
+                               ItemWidth="{Binding (ListView.View).ItemWidth, RelativeSource={RelativeSource AncestorType=ListView}}"
+                               MinWidth="{Binding ItemWidth, RelativeSource={RelativeSource Self}}"
+                               ItemHeight="{Binding (ListView.View).ItemHeight, RelativeSource={RelativeSource AncestorType=ListView}}" />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+        </ListBox>
+
     </Grid>
 </Window>
