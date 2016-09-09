@@ -43,7 +43,7 @@ namespace SieveOfEratosthenes
                 progressBar.Maximum = n;      
                 worker.RunWorkerAsync(n);    // start the worker on another thread
             }
-            else MessageBox.Show("Error: Please enter an integer greater than 1");       // if the user does not enter an integer greater than 1, show a simple error message
+            else MessageBox.Show("Error: Please enter an integer greater than 1.");       // if the user does not enter an integer greater than 1, show a simple error message
 
             numberBox.Clear();
             numberBox.Focus();   // ensures the user can always type in the numberBox without having to click on it
@@ -80,17 +80,19 @@ namespace SieveOfEratosthenes
                     }
                 }
 
-                worker.ReportProgress(100);  // fills the remaining portion of the progress bar
+                worker.ReportProgress(markNumbers.Count-1);  // fills the remaining portion of the progress bar
 
             } catch (OutOfMemoryException) {
-                MessageBox.Show("Oh no! The number you chose was too large. Please choose a smaller number.");
+                MessageBox.Show("Error: The number you chose was too large. Please choose a smaller number.");
             }
         }
 
-        // when the worker finishes executing, refresh the primes on the screen
+        // called when the worker finishes executing
         private void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            displayPrimes.Items.Refresh();
+            displayPrimes.Items.Refresh();                                                           // refresh the primes on the screen
+            if (primeNumbers.Count != 0) displayPrimes.BorderThickness = new Thickness(0, 5, 0, 5);  // add a border around the box of primes
+            progressBar.Value = 0;                                                                   // reset the progress bar
         }
 
         // update the progress bar
