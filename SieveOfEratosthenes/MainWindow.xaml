@@ -4,40 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SieveOfEratosthenes"
+        xmlns:views = "clr-namespace:SieveOfEratosthenes.View"
         mc:Ignorable="d"
         Title="Sieve of Eratosthenes" Height="596.177" Width="525"
         FocusManager.FocusedElement="{Binding ElementName=numberBox}" MinWidth="525" MinHeight="575">
-    <Grid x:Name="MainGrid">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="162*"/>
-            <ColumnDefinition Width="193*"/>
-            <ColumnDefinition Width="162*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="79*"/>
-            <RowDefinition Height="50*"/>
-            <RowDefinition Height="50*"/>
-            <RowDefinition Height="354*"/>
-            <RowDefinition Height="40*"/>
-        </Grid.RowDefinitions>
-        <Border Grid.Row="0" Background="#FF3C546E" Grid.ColumnSpan="3" />
-        <Border Grid.Row="1" Grid.RowSpan="4" Background="#FFBEC3C7" Grid.ColumnSpan="3" />
-        <TextBlock x:Name="title" HorizontalAlignment="Center" Margin="10" TextWrapping="Wrap" VerticalAlignment="Center" FontSize="36" Foreground="White" Grid.Row="0" Text="Find Primes" Grid.ColumnSpan="3"/>
-        <TextBlock x:Name="enterANumber" Margin="10" TextWrapping="Wrap" Text="Enter a number:" FontSize="18" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center"/>
-        <TextBox x:Name="numberBox" Margin="10" Grid.Row="1" TextWrapping="Wrap" MaxLines="1" MaxLength="9" FontSize="20" TextAlignment="Right" Grid.Column="1" VerticalContentAlignment="Stretch" FlowDirection="RightToLeft" HorizontalContentAlignment="Stretch"/>
-        <Button x:Name="button" Content="Find Primes!" HorizontalAlignment="Left" Margin="10" Grid.Row="1" FontSize="16" Click="button_Click" Grid.Column="2" Background="#FFBEC3C7" BorderBrush="Black" Width="105" Padding="0"/>
-        <TextBlock x:Name="calcPrimesText" Margin="10" TextWrapping="Wrap" FontSize="18" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.ColumnSpan="3"/>
-        <ListBox x:Name="displayPrimes" Margin="0" Grid.Row="3" FontSize="40" BorderThickness="0" FontWeight="Light" Background="#FFBEC3C7" Grid.ColumnSpan="3">
-            <ListBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel Width="{Binding (FrameworkElement.ActualWidth), RelativeSource={RelativeSource AncestorType=ScrollContentPresenter}}"
-                               ItemWidth="{Binding (ListView.View).ItemWidth, RelativeSource={RelativeSource AncestorType=ListView}}"
-                               MinWidth="{Binding ItemWidth, RelativeSource={RelativeSource Self}}"
-                               ItemHeight="{Binding (ListView.View).ItemHeight, RelativeSource={RelativeSource AncestorType=ListView}}" />
-                </ItemsPanelTemplate>
-            </ListBox.ItemsPanel>
-        </ListBox>
-        <TextBlock x:Name="progressText" Margin="0" TextWrapping="Wrap" Text="Progress:" FontSize="16" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" Height="22" Width="64"/>
-        <ProgressBar x:Name="progressBar" Margin="10" Grid.Row="4" Grid.Column="1"/>
+   
+    <Grid>
+        <views:PrimesView x:Name = "PrimesViewControl"/>
     </Grid>
+    
 </Window>
